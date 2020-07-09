@@ -1,3 +1,14 @@
+/**
+* 该脚本的思路
+* 运行之后，给定权限跟自启动和电源无限制。
+* 每天到了下面指定的时间，自动运行。
+* 我是android10。偶尔好使，偶尔不好使。
+* 可能是android出于安全考虑，限制了息屏后app的运行（有时候时间会运行很慢，或者不走。我尝试将其安装成系统应用，但是还是不好使）
+* 不过可以用来每隔10分钟执行一次，这样还是可以的，时间一久，就gg了
+*/
+
+
+
 //检查是否开启无障碍服务，若未开启则等待开启
 auto.waitFor();
 
@@ -416,9 +427,7 @@ function main() {
         toast(message);
         console.log(message);
 
-        setTimeout(function() {
-            console.log("时间到，开始执行脚本");
-        }, sleepHour * 60 * 60 * 1000 + sleepMin * 60 * 1000 + sleepSec * 1000);
+        sleep(sleepHour * 60 * 60 * 1000 + sleepMin * 60 * 1000 + sleepSec * 1000);
 
 
 
