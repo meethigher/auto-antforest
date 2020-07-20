@@ -1,8 +1,8 @@
 /**
-* 该脚本思路
-* 做成app,点击app即运行，运行完了关闭。只需要给无障碍权限即可，不用自启动和电源无限制
-* 通过xposed edge pro每天定时执行即可，目前为止完美运行
-*/
+ * 该脚本思路
+ * 做成app,点击app即运行，运行完了关闭。只需要给无障碍权限即可，不用自启动和电源无限制
+ * 通过xposed edge pro每天定时执行即可，目前为止完美运行
+ */
 
 
 //检查是否开启无障碍服务，若未开启则等待开启
@@ -30,6 +30,7 @@ const DEBUG = false;
 main();
 
 function addSteps() {
+    toast("准备运行小米步数管理App");
     launchApp("小米步数管理");
     sleep(500);
     id("edtAddSteps").findOne().setText(20000);
@@ -39,7 +40,7 @@ function addSteps() {
 }
 
 /**
- * 解锁屏幕
+ * 解锁屏幕，密码541881452
  */
 function unlock() {
     if (!device.isScreenOn()) { //息屏状态将屏幕唤醒
@@ -68,14 +69,16 @@ function unlock() {
         click(555, 1379); //5
         sleep(100);
         click(544, 1196); //2
-        sleep(1000);
         console.log("自动解锁屏幕");
     }
+    sleep(500);
 }
 /**
  *锁定屏幕
  */
 function lock() {
+    home();
+    sleep(500);
     KeyCode(26);
     console.log("锁屏");
 }
@@ -89,7 +92,7 @@ function getScreenCapturePermission() { //建议永久开启截图权限，在"�
         console.error("获取截图权限失败，脚本退出");
         exit();
     }
-    toastLog("获取截图权限成功，等待支付宝启动");
+    toast("获取截图权限成功，等待支付宝启动");
     sleep(500);
 }
 
@@ -129,6 +132,7 @@ function findHomePage() {
  * 打开支付宝
  */
 function openAlipay() { //请确保打开了"Auto.js"的后台弹出界面权限
+    toast("准备打开支付宝");
     launchApp("支付宝");
     sleep(1000);
     //寻找支付宝首页
