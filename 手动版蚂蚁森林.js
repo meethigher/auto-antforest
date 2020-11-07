@@ -157,7 +157,7 @@ function entranceAntForest()
             console.log("成功进入蚂蚁森林主页");
     }
     //收集自己的能量
-    collectionEnergyByPosition(100);    //100ms delay
+    collectionEnergyByPosition(2000);    //100ms delay
 
     //确保"查看更多好友"控件出现在屏幕中
     item = null;
@@ -254,7 +254,9 @@ function searchAndClickByName(serach_name, match_pos, text_or_desc, timeout)
  */
 function collectionEnergyByPosition(delay)
 {
+toast("开始收能量");
     if (typeof(delay) == "undefined") delay = 0;
+    sleep(delay);
     for (let i = 0; i < g_energy_postion.length; ++i)
     {
         click(g_energy_postion[i][0], g_energy_postion[i][1]);
@@ -423,6 +425,7 @@ function lock() {
     sleep(500);
     KeyCode(26);
     console.log("锁屏");
+    exit();
 }
 /**
 *增加步数
@@ -444,7 +447,7 @@ function main()
 	//解锁屏幕，密码541881452
     unlock();
 	//添加步数
-	addSteps(20);
+	addSteps(20000);
     //获取截图权限
     getScreenCapturePermission();
     //注册"音量下键按下退出脚本"事件
